@@ -1,6 +1,10 @@
 import "reflect-metadata";
+import dotenv from "dotenv";
+dotenv.config();
 import { DataSource } from "typeorm";
-import { TodoEntity } from "./entity/todo-entity.js";
+import TodoEntity from "./entity/todo.entity.js";
+import UserEntity from "./entity/user.entity.js";
+
 
 const AppDataSource = new DataSource({
     type: "postgres",
@@ -11,7 +15,7 @@ const AppDataSource = new DataSource({
     database: "todo_api",
     synchronize: true,
     logging: false,
-    entities: [TodoEntity],
+    entities: [TodoEntity, UserEntity],
     migrations: [],
     subscribers: [],
 });

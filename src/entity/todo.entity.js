@@ -1,6 +1,6 @@
 import { EntitySchema } from "typeorm";
 
-export const TodoEntity = new EntitySchema({
+const TodoEntity = new EntitySchema({
     name: "Todo",
     tableName: "todos",
     columns: {
@@ -29,5 +29,15 @@ export const TodoEntity = new EntitySchema({
             type: "timestamp",
             updateDate: true
     }
-    }
+    },
+    relations:{
+user:{
+    type: "many-to-one",
+    target: "User",
+    joinColumn: true,
+    onDelete: "CASCADE"
+},
+    },
 });
+
+export default TodoEntity;
