@@ -13,13 +13,13 @@ const TodoEntity = new EntitySchema({
             type: String,
             nullable: false
         },
-        completed: {
-            type: Boolean,
-            default: false
-        },
         description: {
             type: String,
             nullable: true
+        },
+        completed: {
+            type: Boolean,
+            default: false
         },
         createdAt: {
             type: "timestamp",

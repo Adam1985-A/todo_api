@@ -1,6 +1,6 @@
-import { AuthService } from "./service/auth.service.js";
+import { AuthService } from "../service/auth.service.js";
 
-export class AuthControl{
+export class AuthController{
   constructor(){
     this.service = new AuthService();
     this.register = this.register.bind(this);
@@ -23,7 +23,7 @@ const { email, password } = req.body;
 if(!email || !password){
   return res.status(400).json({message: "email and password are required"});
 }
-const token = await service.login(email, password);
+const token = await this.service.login(email, password);
 return res.status(200).json({token});
 
   }catch(error){

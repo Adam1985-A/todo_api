@@ -12,15 +12,7 @@ export class TodoService {
             user: { id: userId }
         }
     });
-    }
-
-    
-
-    async createTodo(payload, userId) {
-        const todo = this.repository.create({...payload, user:{id: userId}});
-        return await this.repository.save(todo);
-    }
-
+}    
     async getTodoById(id) {
   const todo = await this.repository.findOneBy({ id });
 
@@ -30,6 +22,11 @@ export class TodoService {
 
   return todo;
 }
+ async createTodo(payload, userId) {
+        const todo = this.repository.create({...payload, user:{id: userId}});
+        return await this.repository.save(todo);
+    }
+
 async updateTodo(id, payload) {
       
 

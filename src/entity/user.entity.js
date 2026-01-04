@@ -1,9 +1,9 @@
 import { EntitySchema } from "typeorm";
 
 const UserEntity = new EntitySchema({
-  mame: "User",
-  tableName: "user",
-  column:{
+  name: "User",
+  tableName: "users",
+  columns: {
     id:{
       type: Number,
       primary: true,
@@ -31,7 +31,7 @@ const UserEntity = new EntitySchema({
     todos:{
       type: "one-to-many",
       target: "Todo",
-      inverside: "user",
+      inverSide: "user",
     },
   },
 });

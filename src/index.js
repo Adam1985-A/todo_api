@@ -3,14 +3,15 @@ dotenv.config();
 import express from 'express';
 import AppDataSource from './database/data-source.js';
 import todoRoutes from './routes/todo.route.js';
-import authRoutes from "./routes/auth.route.js";
+import authRoutes from './routes/auth.route.js';
+
 
 const app = express();
 const PORT = 4000;
 
 app.use(express.json());
-app.use('/todos', routes);
-app.use('/auth', routes)
+app.use('/todos', todoRoutes);
+app.use('/auth', authRoutes)
 
 AppDataSource.initialize()
     .then(() => {

@@ -2,8 +2,8 @@ import "reflect-metadata";
 import dotenv from "dotenv";
 dotenv.config();
 import { DataSource } from "typeorm";
-import TodoEntity from "./entity/todo.entity.js";
-import UserEntity from "./entity/user.entity.js";
+import TodoEntity from "../entity/todo.entity.js";
+import UserEntity from "../entity/user.entity.js";
 
 
 const AppDataSource = new DataSource({

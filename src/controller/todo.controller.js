@@ -3,12 +3,18 @@ import { TodoService } from "../service/todo.service.js";
 export class TodoController {
   constructor() {
     this.service = new TodoService();
+    this.getAllTodos = this.getAllTodos.bind(this);
+    this.getTodo = this.getTodo.bind(this);
+    this.create = this.create.bind(this);
+    this.update = this.update.bind(this);
+    this.delete = this.delete.bind(this);
+    
   }
 
   // GET /todos
   async getAllTodos(req, res) {
     try {
-      const todos = await this.service.getTodos(req.userId);
+      const todos = await this.service.getTodos(req.user.userId);
       return res.status(200).json(todos);
     } catch (error) {
       return res.status(500).json({ message: error.message });

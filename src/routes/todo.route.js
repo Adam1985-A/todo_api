@@ -3,21 +3,21 @@ import { AuthMiddleware } from "../middleware/auth.middleware.js";
 import { TodoController } from "../controller/todo.controller.js";
 
 const routes = express.Router();
-const todoController = new TodoController();
+const controller = new TodoController();
 
 // GET all todos
 routes.get("/", AuthMiddleware, controller.getAllTodos);
 
 // GET single todo
-routes.get("/:id", controller.getTodo);
+routes.get("/:id", AuthMiddleware, controller.getTodo);
 
 // POST new todo
-routes.post("/", AuthMiddleware, controller.createTodo);
+routes.post("/", AuthMiddleware, controller.create);
 
 // PUT update todo
-routes.put("/:id", controller.updateTodo);
+routes.put("/:id", AuthMiddleware, controller.update);
 
 // DELETE todo
-routes.delete("/:id", controller.deleteTodo);
+routes.delete("/:id", AuthMiddleware, controller.delete);
 
 export default routes;

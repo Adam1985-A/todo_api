@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import AppDataSource from "./database/data-source.js";
-import UserEntity from "./entity/user.entity.js";
+import AppDataSource from "../database/data-source.js";
+import UserEntity from "../entity/user.entity.js";
 
 export class AuthService{
   constructor(){
@@ -12,11 +12,15 @@ export class AuthService{
 
     if(existingUser){
       throw new Error("User already existed");
+    }
       const hashedPassword = await bcrypt.hash(password, 10);
       const user = this.repository.create({email, password: hashedPassword});
       return this.repository.save(user);
-    }
-   
+    
+    return {
+    id: savedUser.id,
+    email: savedUser.email,
+  };
   }
    async login(email, password){
       const user = await this.repository.findOneBy({email});

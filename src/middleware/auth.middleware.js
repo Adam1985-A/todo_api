@@ -14,7 +14,7 @@ if(!token){
 }
 //verify token
 try{
-  const decoded = jwt.verify(token, process.env.JWT_SECERT);
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
   req.user = decoded;
   next(); //allow access
 }catch(error){
