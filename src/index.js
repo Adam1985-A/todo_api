@@ -7,7 +7,7 @@ import authRoutes from './routes/auth.route.js';
 
 
 const app = express();
-const PORT = process.env.DATABASE_URL || 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 app.use('/todos', todoRoutes);
@@ -21,5 +21,5 @@ AppDataSource.initialize()
         console.error("Error during Data Source initialization:", error);
     });
     app.listen(PORT, () => {
-        console.log(`Server is running on http://localhost:${PORT}`);
+        console.log(`Server is running on ${PORT}`);
     });
