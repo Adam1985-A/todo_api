@@ -8,11 +8,10 @@ import UserEntity from "../entity/user.entity.js";
 
 const AppDataSource = new DataSource({
     type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "postgres",
-    password: "saidat1985",
-    database: "todo_api",
+    url: process.env.DATABASE_URL,  
+    ssl: process.env.NODE_ENV === "production" 
+    ? { rejectUnauthorized: false } 
+    : false, 
     synchronize: true,
     logging: false,
     entities: [TodoEntity, UserEntity],
